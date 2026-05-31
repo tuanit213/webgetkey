@@ -3,34 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dang nhap - Web Get Key</title>
+    <title>Đăng nhập - Web Get Key</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body data-page="login">
     <main class="center-shell">
       <section class="panel login-panel">
         <p class="eyebrow">Web Get Key</p>
-        <h1>Dang nhap</h1>
-        <p class="muted">Dang nhap bang Supabase Auth khi da cau hinh database.</p>
+        <h1>Đăng nhập</h1>
+        <p class="muted">Đăng nhập bằng tài khoản đã được tạo trong hệ thống.</p>
 
         <form id="loginForm" class="stack-form">
           <label>
-            Tai khoan
+            Tài khoản
             <input id="username" name="username" type="text" autocomplete="username" required />
           </label>
           <label>
-            Mat khau
+            Mật khẩu
             <input id="password" name="password" type="password" autocomplete="current-password" required />
           </label>
           <p id="loginMessage" class="message" aria-live="polite"></p>
-          <button class="button primary" type="submit">Dang nhap</button>
+          <button class="button primary" type="submit">Đăng nhập</button>
         </form>
-
-        <div class="demo-box">
-          <strong>Tai khoan</strong>
-          <span>Supabase: dung email/password da tao trong Auth.</span>
-          <span>Local fallback: admin/admin123 hoac user/user123.</span>
-        </div>
       </section>
     </main>
 

@@ -1,52 +1,52 @@
 # Web Get Key
 
-Web shop key bang HTML, CSS, JavaScript thuan, co the deploy len GitHub Pages va dung Supabase lam database.
+Web shop key bằng HTML, CSS, JavaScript thuần, có thể deploy lên GitHub Pages và dùng Supabase làm database.
 
-## Cach chay local
+## Cách chạy local
 
 ```bash
 python -m http.server 5500
 ```
 
-Sau do mo `http://127.0.0.1:5500`.
+Sau đó mở `http://127.0.0.1:5500`.
 
 ## Setup database
 
-1. Tao project tren Supabase.
-2. Mo Supabase SQL Editor, chay file `supabase/schema.sql`.
-3. Tao user trong Supabase Authentication.
-4. Tao profile role theo huong dan trong `supabase/setup.md`.
-5. Dien Supabase Project URL va anon key vao `js/config.js`.
+1. Tạo project trên Supabase.
+2. Mở Supabase SQL Editor, chạy file `supabase/schema.sql`.
+3. Tạo user trong Supabase Authentication.
+4. Tạo profile role theo hướng dẫn trong `supabase/setup.md`.
+5. Điền Supabase Project URL và anon key vào `js/config.js`.
 
-File `supabase/schema.sql` da co lenh xoa sach kho key:
+File `supabase/schema.sql` đã có lệnh xóa sạch kho key:
 
 ```sql
 truncate table public.key_pool restart identity;
 ```
 
-## Tai khoan
+## Tài khoản
 
-Khi da cau hinh Supabase, dang nhap bang email/password trong Supabase Auth.
+Khi đã cấu hình Supabase, đăng nhập bằng email/password trong Supabase Auth.
 
-Neu chua cau hinh Supabase, web chay local fallback:
+Nếu chưa cấu hình Supabase, web chạy local fallback:
 
 - Admin: `admin` / `admin123`
 - User: `user` / `user123`
 
-## Chuc nang
+## Chức năng
 
-- User xem danh sach game, lay 1 key va copy key.
-- Khi user lay key, database function `wgk_claim_next_key()` tra ve 1 key va xoa key do khoi `key_pool`.
-- Admin nhap nhieu key cung luc theo tung game.
-- Admin xoa kho key cua tung game.
-- Admin quan ly acc.
+- User xem danh sách game, lấy 1 key và copy key.
+- Khi user lấy key, database function `wgk_claim_next_key()` trả về 1 key và xóa key đó khỏi `key_pool`.
+- Admin nhập nhiều key cùng lúc theo từng game.
+- Admin xóa kho key của từng game.
+- Admin quản lý acc.
 
 ## Deploy GitHub Pages
 
-1. Tao GitHub repository moi.
-2. Push toan bo thu muc nay len repo.
-3. Vao repo Settings -> Pages.
-4. Chon branch `main` va folder `/root`.
-5. Mo link GitHub Pages sau khi deploy xong.
+1. Tạo GitHub repository mới.
+2. Push toàn bộ thư mục này lên repo.
+3. Vào repo Settings -> Pages.
+4. Chọn branch `main` và folder `/root`.
+5. Mở link GitHub Pages sau khi deploy xong.
 
-Khong dua Supabase service role key vao website. Chi dung anon public key trong `js/config.js`.
+Không đưa Supabase service role key vào website. Chỉ dùng anon public key trong `js/config.js`.

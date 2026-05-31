@@ -22,12 +22,12 @@ const gameIcons = {
 };
 
 const seedGames = [
-  gameSeed("local-lien-quan", "lien-quan-mobile", "Lien Quan Mobile", gameIcons.lienQuan, "iOS", "3 gio", "15K", "iOS | FREE | 3 gio", 1),
-  gameSeed("local-pubg", "pubg-mobile", "PUBG Mobile", gameIcons.pubg, "iOS", "6 gio", "8K", "iOS | FREE | 6 gio", 2),
-  gameSeed("local-free-fire", "free-fire", "Free Fire", gameIcons.freeFire, "iOS", "3 gio", "186", "iOS | FREE | Moi cap nhat", 3),
-  gameSeed("local-free-fire-max", "free-fire-max", "Free Fire MAX", gameIcons.freeFireMax, "Android", "2 gio", "2K", "Android | FREE", 4),
-  gameSeed("local-fc-online", "fc-online-m", "FC Online M", gameIcons.fcOnline, "iOS", "3 gio", "4K", "iOS | FREE | 3 gio", 5),
-  gameSeed("local-codm", "codm-garena", "CODM Garena", gameIcons.codm, "Android", "Bao tri", "1K", "Android | Dang bao tri", 6),
+  gameSeed("local-lien-quan", "lien-quan-mobile", "Liên Quân Mobile", gameIcons.lienQuan, "iOS", "3 giờ", "15K", "iOS | FREE | 3 giờ", 1),
+  gameSeed("local-pubg", "pubg-mobile", "PUBG Mobile", gameIcons.pubg, "iOS", "6 giờ", "8K", "iOS | FREE | 6 giờ", 2),
+  gameSeed("local-free-fire", "free-fire", "Free Fire", gameIcons.freeFire, "iOS", "3 giờ", "186", "iOS | FREE | Mới cập nhật", 3),
+  gameSeed("local-free-fire-max", "free-fire-max", "Free Fire MAX", gameIcons.freeFireMax, "Android", "2 giờ", "2K", "Android | FREE", 4),
+  gameSeed("local-fc-online", "fc-online-m", "FC Online M", gameIcons.fcOnline, "iOS", "3 giờ", "4K", "iOS | FREE | 3 giờ", 5),
+  gameSeed("local-codm", "codm-garena", "CODM Garena", gameIcons.codm, "Android", "Bảo trì", "1K", "Android | Đang bảo trì", 6),
 ];
 
 const appState = {
@@ -287,8 +287,8 @@ function setupKeyModal() {
     selectedGameId = item.id;
     revealedKey = "";
     title.textContent = item.name;
-    note.textContent = `${item.note || "Key san sang de lay."} - Con ${getStockCount(item)} key`;
-    result.textContent = "Bam Get key de hien key.";
+    note.textContent = `${item.note || "Key sẵn sàng để lấy."} - Còn ${getStockCount(item)} key`;
+    result.textContent = "Bấm Get key để hiện key.";
     result.classList.remove("visible");
     revealBtn.hidden = false;
     copyBtn.hidden = true;
@@ -320,7 +320,7 @@ function setupKeyModal() {
     try {
       const nextKey = await claimNextKey(selectedGameId);
       if (!nextKey) {
-        result.textContent = "Game nay da het key.";
+        result.textContent = "Game này đã hết key.";
         result.classList.remove("visible");
         revealBtn.hidden = true;
         copyBtn.hidden = true;
@@ -337,7 +337,7 @@ function setupKeyModal() {
       await loadDashboard(document.body.dataset.page === "admin");
     } catch (error) {
       console.error("Cannot claim key", error);
-      result.textContent = "Khong lay duoc key. Hay thu lai.";
+      result.textContent = "Không lấy được key. Hãy thử lại.";
     } finally {
       revealBtn.disabled = false;
     }
@@ -347,9 +347,9 @@ function setupKeyModal() {
     if (!revealedKey) return;
     try {
       await navigator.clipboard.writeText(revealedKey);
-      copyMessage.textContent = "Da copy key.";
+      copyMessage.textContent = "Đã copy key.";
     } catch {
-      copyMessage.textContent = "Khong copy tu dong duoc, hay boi den key va copy thu cong.";
+      copyMessage.textContent = "Không copy tự động được, hãy bôi đen key và copy thủ công.";
     }
   });
 
@@ -367,7 +367,7 @@ function renderKeys(isAdmin = false) {
   if (!container) return;
 
   if (!appState.games.length) {
-    container.innerHTML = '<div class="empty-state">Chua co game nao.</div>';
+    container.innerHTML = '<div class="empty-state">Chưa có game nào.</div>';
     return;
   }
 
@@ -375,14 +375,14 @@ function renderKeys(isAdmin = false) {
     .map((item) => {
       const stockCount = getStockCount(item);
       const isDisabled = !item.is_active || stockCount === 0;
-      const statusText = stockCount > 0 ? `con ${stockCount} key` : "het key";
+      const statusText = stockCount > 0 ? `còn ${stockCount} key` : "hết key";
       const actions = isAdmin
         ? `<div class="card-actions">
-            <button class="button small primary" type="button" data-open-key="${item.id}" ${isDisabled ? "disabled" : ""}>Nhan key</button>
-            <button class="button small ghost" type="button" data-edit-key="${item.id}">Sua</button>
-            <button class="button small danger" type="button" data-delete-key="${item.id}">Xoa</button>
+            <button class="button small primary" type="button" data-open-key="${item.id}" ${isDisabled ? "disabled" : ""}>Nhận key</button>
+            <button class="button small ghost" type="button" data-edit-key="${item.id}">Sửa</button>
+            <button class="button small danger" type="button" data-delete-key="${item.id}">Xóa</button>
           </div>`
-        : `<button class="button small primary" type="button" data-open-key="${item.id}" ${isDisabled ? "disabled" : ""}>Nhan key</button>`;
+        : `<button class="button small primary" type="button" data-open-key="${item.id}" ${isDisabled ? "disabled" : ""}>Nhận key</button>`;
 
       return `<article class="product-card">
         <div class="product-media">
@@ -414,7 +414,7 @@ function renderAccounts(isAdmin = false) {
   if (!container) return;
 
   if (!appState.accounts.length) {
-    container.innerHTML = '<div class="empty-state">Chua co acc nao.</div>';
+    container.innerHTML = '<div class="empty-state">Chưa có acc nào.</div>';
     return;
   }
 
@@ -423,8 +423,8 @@ function renderAccounts(isAdmin = false) {
     .map((item) => {
       const actions = isAdmin
         ? `<td><div class="row-actions">
-            <button class="button small ghost" type="button" data-edit-account="${item.id}">Sua</button>
-            <button class="button small danger" type="button" data-delete-account="${item.id}">Xoa</button>
+            <button class="button small ghost" type="button" data-edit-account="${item.id}">Sửa</button>
+            <button class="button small danger" type="button" data-delete-account="${item.id}">Xóa</button>
           </div></td>`
         : "";
 
@@ -441,10 +441,10 @@ function renderAccounts(isAdmin = false) {
   container.innerHTML = `<table>
     <thead>
       <tr>
-        <th>Dich vu</th>
+        <th>Dịch vụ</th>
         <th>Username</th>
         <th>Password</th>
-        <th>Ghi chu</th>
+        <th>Ghi chú</th>
         ${actionHead}
       </tr>
     </thead>
@@ -472,7 +472,7 @@ async function setupLoginPage() {
     if (!isDatabaseEnabled()) {
       const user = seedUsers.find((item) => item.username === username && item.password === password);
       if (!user) {
-        message.textContent = "Tai khoan hoac mat khau khong dung.";
+        message.textContent = "Tài khoản hoặc mật khẩu không đúng.";
         return;
       }
       setLocalSession(user);
@@ -483,13 +483,13 @@ async function setupLoginPage() {
     const email = normalizeLoginEmail(username);
     const { error } = await appState.supabase.auth.signInWithPassword({ email, password });
     if (error) {
-      message.textContent = "Dang nhap Supabase that bai. Kiem tra email/mat khau.";
+      message.textContent = "Đăng nhập Supabase thất bại. Kiểm tra email/mật khẩu.";
       return;
     }
 
     const user = await getAppSession();
     if (!user) {
-      message.textContent = "Dang nhap thanh cong nhung chua co profile role.";
+      message.textContent = "Đăng nhập thành công nhưng tài khoản chưa có quyền truy cập.";
       return;
     }
     redirectByRole(user);
@@ -530,7 +530,7 @@ function setupAdminForms() {
       .filter(Boolean);
 
     if (!gameId || !bulkKeys.length) {
-      keyFormMessage.textContent = "Hay chon game va nhap it nhat 1 key.";
+      keyFormMessage.textContent = "Hãy chọn game và nhập ít nhất 1 key.";
       return;
     }
 
@@ -555,12 +555,12 @@ function setupAdminForms() {
       }
 
       keyForm.elements.bulkKeys.value = "";
-      keyFormMessage.textContent = `Da them ${uniqueKeys.length} key vao kho.`;
+      keyFormMessage.textContent = `Đã thêm ${uniqueKeys.length} key vào kho.`;
       await loadDashboard(true);
       populateGameKeySelect(gameId);
     } catch (error) {
       console.error("Cannot add keys", error);
-      keyFormMessage.textContent = "Khong them duoc key. Kiem tra quyen admin/database.";
+      keyFormMessage.textContent = "Không thêm được key. Kiểm tra quyền admin/database.";
     }
   });
 
@@ -568,7 +568,7 @@ function setupAdminForms() {
     const gameId = keyForm.elements.gameId.value;
     const game = appState.games.find((item) => item.id === gameId);
     if (!game) return;
-    if (!confirm(`Xoa tat ca key cua ${game.name}?`)) return;
+    if (!confirm(`Xóa tất cả key của ${game.name}?`)) return;
 
     try {
       if (isDatabaseEnabled()) {
@@ -582,12 +582,12 @@ function setupAdminForms() {
         saveLocalGames(games);
       }
 
-      keyFormMessage.textContent = `Da xoa kho key cua ${game.name}.`;
+      keyFormMessage.textContent = `Đã xóa kho key của ${game.name}.`;
       await loadDashboard(true);
       populateGameKeySelect(gameId);
     } catch (error) {
       console.error("Cannot clear keys", error);
-      keyFormMessage.textContent = "Khong xoa duoc kho key.";
+      keyFormMessage.textContent = "Không xóa được kho key.";
     }
   });
 
@@ -614,7 +614,7 @@ function setupAdminForms() {
       await loadDashboard(true);
     } catch (error) {
       console.error("Cannot save account", error);
-      alert("Khong luu duoc acc. Kiem tra quyen admin/database.");
+      alert("Không lưu được acc. Kiểm tra quyền admin/database.");
     }
   });
 }
@@ -626,7 +626,7 @@ function populateGameKeySelect(selectedId = "") {
   select.innerHTML = appState.games
     .map((item) => {
       const isSelected = selectedId === item.id ? "selected" : "";
-      return `<option value="${escapeHtml(item.id)}" ${isSelected}>${escapeHtml(item.name)} - con ${getStockCount(item)} key</option>`;
+      return `<option value="${escapeHtml(item.id)}" ${isSelected}>${escapeHtml(item.name)} - còn ${getStockCount(item)} key</option>`;
     })
     .join("");
 }
@@ -650,7 +650,7 @@ function setupAdminActions() {
 
 async function deleteGame(id) {
   const game = appState.games.find((item) => item.id === id);
-  if (!game || !confirm(`Xoa game ${game.name}?`)) return;
+  if (!game || !confirm(`Xóa game ${game.name}?`)) return;
 
   try {
     if (isDatabaseEnabled()) {
@@ -662,7 +662,7 @@ async function deleteGame(id) {
     await loadDashboard(true);
   } catch (error) {
     console.error("Cannot delete game", error);
-    alert("Khong xoa duoc game.");
+    alert("Không xóa được game.");
   }
 }
 
@@ -670,11 +670,11 @@ async function editGame(id) {
   const item = appState.games.find((game) => game.id === id);
   if (!item) return;
 
-  const name = prompt("Ten game", item.name);
+  const name = prompt("Tên game", item.name);
   if (name === null) return;
-  const note = prompt("Ghi chu", item.note);
+  const note = prompt("Ghi chú", item.note);
   if (note === null) return;
-  const activeInput = prompt("Trang thai: active hoac disabled", item.is_active ? "active" : "disabled");
+  const activeInput = prompt("Trạng thái: active hoặc disabled", item.is_active ? "active" : "disabled");
   if (activeInput === null) return;
   const isActive = activeInput.trim() !== "disabled";
 
@@ -696,12 +696,12 @@ async function editGame(id) {
     await loadDashboard(true);
   } catch (error) {
     console.error("Cannot update game", error);
-    alert("Khong sua duoc game.");
+    alert("Không sửa được game.");
   }
 }
 
 async function deleteAccount(id) {
-  if (!confirm("Xoa acc nay?")) return;
+  if (!confirm("Xóa acc này?")) return;
   try {
     if (isDatabaseEnabled()) {
       const { error } = await appState.supabase.from("accounts").delete().eq("id", id);
@@ -712,7 +712,7 @@ async function deleteAccount(id) {
     await loadDashboard(true);
   } catch (error) {
     console.error("Cannot delete account", error);
-    alert("Khong xoa duoc acc.");
+    alert("Không xóa được acc.");
   }
 }
 
@@ -720,13 +720,13 @@ async function editAccount(id) {
   const item = appState.accounts.find((account) => account.id === id);
   if (!item) return;
 
-  const service = prompt("Dich vu", item.service);
+  const service = prompt("Dịch vụ", item.service);
   if (service === null) return;
   const username = prompt("Username", item.username);
   if (username === null) return;
   const password = prompt("Password", item.password);
   if (password === null) return;
-  const note = prompt("Ghi chu", item.note);
+  const note = prompt("Ghi chú", item.note);
   if (note === null) return;
 
   const payload = {
@@ -749,7 +749,7 @@ async function editAccount(id) {
     await loadDashboard(true);
   } catch (error) {
     console.error("Cannot update account", error);
-    alert("Khong sua duoc acc.");
+    alert("Không sửa được acc.");
   }
 }
 
