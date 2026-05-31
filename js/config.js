@@ -1,4 +1,4 @@
 window.WGK_CONFIG = {
-  supabaseUrl: "",
-  supabaseAnonKey: "",
+  supabaseUrl: "https://wlpibrykgppeavmbkxjz.supabase.co",
+  supabaseAnonKey: "sb_publishable_mkHxKbsHB8qBz2RXI51j-w_3860Yksj",
 };
