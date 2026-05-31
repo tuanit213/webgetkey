@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220">
+  <defs><linearGradient id="a" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#7ed6ff"/><stop offset="1" stop-color="#1d4b70"/></linearGradient></defs>
+  <rect width="320" height="220" rx="28" fill="url(#a)"/>
+  <circle cx="168" cy="91" r="38" fill="#1a2430"/>
+  <path d="M78 200c14-66 167-66 184 0z" fill="#1a2430"/>
+  <path d="M96 83h142l-23-31H120z" fill="#3a4b5b"/>
+  <text x="39" y="161" font-family="Arial" font-size="31" font-weight="900" fill="#ffe16c">BATTLE</text>
+  <text x="65" y="195" font-family="Arial" font-size="25" font-weight="900" fill="#ff7a21">MOBILE</text>
+</svg>

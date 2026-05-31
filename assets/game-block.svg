@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220">
+  <rect width="320" height="220" rx="28" fill="#2e63ff"/>
+  <path d="M105 49l126 34-35 126L70 175z" fill="#fff"/>
+  <path d="M145 104l42 12-12 42-42-12z" fill="#2e63ff"/>
+  <text x="99" y="200" font-family="Arial" font-size="23" font-weight="900" fill="#111">BLOCK</text>
+</svg>

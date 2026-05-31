@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220">
+  <defs><linearGradient id="a" x1="0" x2="1"><stop stop-color="#ff8d2d"/><stop offset="1" stop-color="#6b2417"/></linearGradient></defs>
+  <rect width="320" height="220" rx="28" fill="url(#a)"/>
+  <circle cx="230" cy="64" r="66" fill="#ffd39d" opacity=".7"/>
+  <path d="M34 170c42-70 89-96 158-102 36-3 61 7 88 35v117H34z" fill="#231616" opacity=".5"/>
+  <path d="M73 150l54-95 64 105" fill="none" stroke="#fff5db" stroke-width="12" stroke-linejoin="round"/>
+  <text x="28" y="62" font-family="Arial" font-size="44" font-weight="900" fill="#fff">5v5</text>
+  <text x="202" y="197" font-family="Arial" font-size="22" font-weight="900" fill="#ffe05d">MOD</text>
+</svg>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Key - Web Get Key</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="user">
+    <header class="site-nav">
+      <div class="nav-inner">
+        <a class="brand" href="user.html" aria-label="Web Get Key">
+          <img src="assets/avatar.svg" alt="" />
+          <span>WEBGETKEY</span>
+        </a>
+        <nav class="nav-links" aria-label="Dieu huong chinh">
+          <a href="user.html">Game</a>
+          <a href="https://discord.com" target="_blank" rel="noreferrer">Discord</a>
+          <a href="https://telegram.org" target="_blank" rel="noreferrer">Telegram</a>
+        </nav>
+        <div class="nav-actions">
+          <span id="currentUserLabel" class="user-chip"></span>
+          <button id="logoutBtn" class="button nav-button" type="button">Dang xuat</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="shop-shell">
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <div class="hero-status"><span></span> Online - Secure sideload</div>
+          <h1>Game Mod<br /><span>Khong Gioi Han</span></h1>
+          <p>&gt; Cai IPA &amp; APK truc tiep - Khong jailbreak - Mien phi</p>
+          <a class="button hero-button" href="#keyList">Kham pha ngay</a>
+        </div>
+        <div class="hero-apps" aria-hidden="true">
+          <img src="https://play-lh.googleusercontent.com/DduNvUMc6rXuH1v9ErjwBcLQ5VUxHNnRK2EVL9odjJ7vGubZZh0_M0VfsBjK-4TsQMg%3Dw240-h480" alt="" />
+          <img src="https://play-lh.googleusercontent.com/zCSGnBtZk0Lmp1BAbyaZfLktDzHmC6oke67qzz3G1lBegAF2asyt5KzXOJ2PVdHDYkU%3Dw240-h480" alt="" />
+          <img src="https://play-lh.googleusercontent.com/1wE91ae_1YIJtIjQ1YJz5RhAajxEpF1TfrXGg7tcrKl90MOnF7XdFj71pw_MSQbyhM5PYz-eRdeBFQBzSGrV%3Dw240-h480" alt="" />
+          <img src="https://play-lh.googleusercontent.com/EJ83sg58Oo2gAjMHFxFVLM6Z53kuH4_R0M7Yq7gts5fWSIlFchUlmskG1vJKMoncmfOxBXcgJyIaO-nak6sO-MM%3Dw240-h480" alt="" />
+          <img src="https://play-lh.googleusercontent.com/KjEM7U-WBSbhBHGsSPlylm5c-Mv2KkguCm2Om2QNgJG-TTeyEGYk3BRf3Yh3iXp4v5s%3Dw240-h480" alt="" />
+          <img src="https://play-lh.googleusercontent.com/qbOiSlyprOTjbV2_VrOrlhsxeSmxuNW1Ug0-BQglEdEh6hfZOUxg2FcxUCW9AXMwCxybgEBtyVAJY0ZUaM87%3Dw240-h480" alt="" />
+        </div>
+      </section>
+
+      <a class="support-card" href="https://telegram.org" target="_blank" rel="noreferrer">
+        <span class="support-icon">TG</span>
+        <span>
+          <strong>@webgetkey_support</strong>
+          <small>Nhom Telegram - Chat &amp; ho tro</small>
+        </span>
+        <span class="support-open">&nearr;</span>
+      </a>
+
+      <section class="filter-row" aria-label="Bo loc">
+        <span class="filter-label">Loc</span>
+        <button class="chip active" type="button">Tat ca <span>7</span></button>
+        <button class="chip" type="button">iOS <span>5</span></button>
+        <button class="chip" type="button">Android <span>2</span></button>
+        <button class="chip" type="button">iOS+APK <span>0</span></button>
+      </section>
+
+      <section class="section-heading">
+        <span></span>
+        <strong>Featured</strong>
+        <small>(4)</small>
+      </section>
+
+      <section id="keyList" class="product-grid"></section>
+
+      <section class="data-section">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Account</p>
+            <h2>Danh sach acc</h2>
+          </div>
+        </div>
+        <div id="accountList" class="table-wrap"></div>
+      </section>
+    </main>
+
+    <div id="keyModal" class="modal-backdrop" hidden>
+      <section class="key-modal" role="dialog" aria-modal="true" aria-labelledby="keyModalTitle">
+        <button id="closeKeyModal" class="modal-close" type="button" aria-label="Dong">&times;</button>
+        <p class="eyebrow">Get key</p>
+        <h2 id="keyModalTitle">Lay key</h2>
+        <p id="keyModalNote" class="muted"></p>
+        <div id="keyResult" class="key-result">Bam Get key de hien key.</div>
+        <div class="modal-actions">
+          <button id="revealKeyBtn" class="button primary" type="button">Get key</button>
+          <button id="copyKeyBtn" class="button ghost" type="button" hidden>Copy key</button>
+        </div>
+        <p id="copyMessage" class="copy-message" aria-live="polite"></p>
+      </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

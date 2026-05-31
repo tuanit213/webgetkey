@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dang nhap - Web Get Key</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="login">
+    <main class="center-shell">
+      <section class="panel login-panel">
+        <p class="eyebrow">Web Get Key</p>
+        <h1>Dang nhap</h1>
+        <p class="muted">Dang nhap bang Supabase Auth khi da cau hinh database.</p>
+
+        <form id="loginForm" class="stack-form">
+          <label>
+            Tai khoan
+            <input id="username" name="username" type="text" autocomplete="username" required />
+          </label>
+          <label>
+            Mat khau
+            <input id="password" name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <p id="loginMessage" class="message" aria-live="polite"></p>
+          <button class="button primary" type="submit">Dang nhap</button>
+        </form>
+
+        <div class="demo-box">
+          <strong>Tai khoan</strong>
+          <span>Supabase: dung email/password da tao trong Auth.</span>
+          <span>Local fallback: admin/admin123 hoac user/user123.</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
