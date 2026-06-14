@@ -139,10 +139,12 @@
         <p class="eyebrow">Get key</p>
         <h2 id="keyModalTitle">Lấy key</h2>
         <p id="keyModalNote" class="muted"></p>
-        <div id="keyResult" class="key-result">Bấm Get key để hiện key.</div>
+        <div class="key-copy-row">
+          <div id="keyResult" class="key-result">Bấm Get key để hiện key.</div>
+          <button id="copyKeyBtn" class="button ghost copy-key-button" type="button" hidden>Copy key</button>
+        </div>
         <div class="modal-actions">
           <button id="revealKeyBtn" class="button primary" type="button">Get key</button>
-          <button id="copyKeyBtn" class="button ghost" type="button" hidden>Copy key</button>
         </div>
         <p id="copyMessage" class="copy-message" aria-live="polite"></p>
       </section>

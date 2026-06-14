@@ -283,6 +283,28 @@ function setupKeyModal() {
   let selectedGameId = null;
   let revealedKey = "";
 
+  async function copyTextToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.top = "0";
+    textarea.style.left = "-9999px";
+    document.body.append(textarea);
+    textarea.select();
+
+    try {
+      if (!document.execCommand("copy")) throw new Error("Copy command failed");
+    } finally {
+      textarea.remove();
+    }
+  }
+
   function resetModal(item) {
     selectedGameId = item.id;
     revealedKey = "";
@@ -346,7 +368,7 @@ function setupKeyModal() {
   copyBtn.addEventListener("click", async () => {
     if (!revealedKey) return;
     try {
-      await navigator.clipboard.writeText(revealedKey);
+      await copyTextToClipboard(revealedKey);
       copyMessage.textContent = "Đã copy key.";
     } catch {
       copyMessage.textContent = "Không copy tự động được, hãy bôi đen key và copy thủ công.";

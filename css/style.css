@@ -518,11 +518,20 @@ code {
   line-height: 1;
 }
 
+.key-copy-row {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 14px;
+}
+
 .key-result {
+  flex: 1 1 260px;
   min-height: 58px;
   display: flex;
   align-items: center;
-  margin: 18px 0 14px;
+  margin: 0;
   border: 1px dashed #cfc7b8;
   border-radius: 10px;
   padding: 14px;
@@ -539,6 +548,11 @@ code {
   background: #efffe7;
   color: #18310f;
   font-weight: 900;
+}
+
+.copy-key-button {
+  min-height: 58px;
+  white-space: nowrap;
 }
 
 .modal-actions {
@@ -884,5 +898,9 @@ td {
 
   .support-open {
     display: none;
+  }
+
+  .copy-key-button {
+    width: 100%;
   }
 }
